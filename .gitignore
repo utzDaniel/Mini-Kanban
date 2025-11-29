@@ -1,0 +1,61 @@
+# ==========================================
+# Java (Maven) + IntelliJ
+# ==========================================
+
+# Compilação
+target/
+
+# Logs
+*.log
+
+# Arquivos de build Maven
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# ==========================================
+# React (Vite) + Node.js
+# ==========================================
+
+# Dependências
+node_modules/
+
+# Builds
+dist/
+build/
+
+# Ambiente
+.env
+.env.*.local
+
+# Cache
+.cache/
+.vite/
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# Sistemas operacionais
+.DS_Store
+Thumbs.db
