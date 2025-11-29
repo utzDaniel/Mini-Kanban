@@ -85,3 +85,42 @@ Este projeto utiliza **MySQL 8** e pode ser facilmente configurado usando Docker
     ```bash
     docker restart mysql8
     ```
+### Diagrama ER do Banco
+
+Abaixo está o diagrama ER gerado pelo MySQL Workbench, mostrando as tabelas e relacionamentos do banco de dados:
+
+![Diagrama ER do Mini-Kanban](docs/imagens/diagrama_kanban.png)
+
+As três entidades são: **Board**, **Board_Column** e **Card**, com os seguintes atributos e relacionamentos:
+
+### Tabelas e Atributos
+
+- **Board (Quadro)**
+  - `id` (PK): Identificador único do quadro
+  - `name`: Nome do quadro
+  - `created_at / updated_at`: Timestamps de criação e atualização
+
+- **Board_Column (Coluna)**
+  - `id` (PK): Identificador único da coluna
+  - `name`: Nome da coluna
+  - `board_id` (FK → Board.id): Quadro ao qual pertence
+  - `position`: Ordem da coluna no quadro
+  - `created_at / updated_at`: Timestamps
+  - **Restrição:** nome único por quadro (`board_id + name`)
+
+- **Card (Cartão/Tarefa)**
+  - `id` (PK): Identificador único do cartão
+  - `title`: Título da tarefa
+  - `description`: Descrição opcional
+  - `column_id` (FK → Board_Column.id): Coluna à qual pertence
+  - `created_at / updated_at`: Timestamps
+
+### Relacionamentos
+
+- **Board → Board_Column**: 1:N  
+  Um quadro possui várias colunas.  
+  `Board_Column.board_id → Board.id` com `ON DELETE CASCADE`
+
+- **Board_Column → Card**: 1:N  
+  Uma coluna possui vários cartões.  
+  `Card.column_id → Board_Column.id` com `ON DELETE CASCADE`
